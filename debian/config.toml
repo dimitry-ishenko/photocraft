@@ -1,5 +1,5 @@
 [profile.release]
-debug = true
+debug = false
 strip = false
 
 [source.crates-io]
