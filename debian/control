@@ -3,8 +3,8 @@ Section: graphics
 Maintainer: Dimitry Ishenko <dimitry.ishenko@gmail.com>
 Build-Depends:
  debhelper-compat (= 13),
- cargo:native (>= 1.95) | cargo-1.95:native,
- rustc:native (>= 1.95) | rustc-1.95:native,
+ cargo:native (>= 1.95) | cargo-1.97:native,
+ rustc:native (>= 1.95) | rustc-1.97:native,
 Standards-Version: 4.7.4
 Homepage: https://getartcraft.com/apps/photocraft
 Vcs-Browser: https://github.com/storytold/photocraft
