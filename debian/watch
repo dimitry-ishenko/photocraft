@@ -1,0 +1,7 @@
+Version: 5
+
+Template: GitHub
+Owner: storytold
+Project: @PACKAGE@
+Repack-Suffix: +dfsg
+Dversion-Mangle: s/\+dfsg\d*$//

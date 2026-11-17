@@ -1,0 +1,57 @@
+#!/usr/bin/make -f
+include /usr/share/dpkg/pkg-info.mk
+
+export DH_VERBOSE = 1
+
+RUST_VERS = 1.95
+export CARGO := $(shell command -v cargo-$(RUST_VERS) 2>/dev/null || command -v cargo)
+export RUSTC := $(shell command -v rustc-$(RUST_VERS) 2>/dev/null || command -v rustc)
+
+export CARGO_HOME = $(CURDIR)/debian/cargo_home
+export LOCKSTEP_XML_PATH = $(CURDIR)/vendor/atspi-common/xml
+
+VERS := $(DEB_VERSION_UPSTREAM)
+DATE := $(shell date -u -d @$(SOURCE_DATE_EPOCH) +%F)
+
+APP_ID  = ai.storyteller.photocraft
+DOCDIR  = target/doc
+PKGDIR  = packaging/linux
+
+DESTDIR = $(CURDIR)/debian/photocraft
+BINDIR  = /usr/bin
+DATADIR = /usr/share
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	install -Dt $(CARGO_HOME) debian/config.toml
+	dh_auto_configure
+
+override_dh_auto_build:
+	$(CARGO) build --frozen --release --package photocraft --package photocraft-cli --features heif --bins
+	$(CARGO) build --frozen --release --package photocraft-cli --features heif --example man-and-completions
+	target/release/examples/man-and-completions $(DOCDIR)
+
+override_dh_auto_install:
+	install -Dt $(DESTDIR)$(BINDIR) target/release/photocraft target/release/photocraft-cli
+	
+	install -Dt $(DESTDIR)$(DATADIR)/applications $(PKGDIR)/$(APP_ID).desktop
+	install -Dm644 $(PKGDIR)/$(APP_ID).mime.xml $(DESTDIR)$(DATADIR)/mime/packages/$(APP_ID).xml
+	install -Dt $(DESTDIR)$(DATADIR)/doc/photocraft docs/mcp.md docs/control-protocol.md
+	
+	mkdir -p $(DESTDIR)$(DATADIR)/metainfo
+	sed -e "s/@VERSION@/$(VERS)/g" -e "s/@DATE@/$(DATE)/g" \
+		$(PKGDIR)/$(APP_ID).metainfo.xml.in > $(DESTDIR)$(DATADIR)/metainfo/$(APP_ID).metainfo.xml
+	
+	mkdir -p $(DESTDIR)$(DATADIR)/icons
+	cp -R assets/app-icon/hicolor $(DESTDIR)$(DATADIR)/icons/
+	
+	install -Dt $(DESTDIR)$(DATADIR)/man/man1 $(DOCDIR)/*.1
+	install -D  $(DOCDIR)/photocraft-cli.bash $(DESTDIR)$(DATADIR)/bash-completion/completions/photocraft-cli
+	install -Dt $(DESTDIR)$(DATADIR)/zsh/vendor-completions $(DOCDIR)/_photocraft-cli
+	install -Dt $(DESTDIR)$(DATADIR)/fish/vendor_completions.d $(DOCDIR)/photocraft-cli.fish
+
+override_dh_clean:
+	rm -rf target $(CARGO_HOME)
+	dh_clean --exclude=vendor

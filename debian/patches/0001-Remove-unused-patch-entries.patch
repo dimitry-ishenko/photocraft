@@ -1,0 +1,37 @@
+From: Dimitry Ishenko <dimitry.ishenko@gmail.com>
+Date: Nov, 16 2026 02:23:31 -0500
+Subject: [PATCH] Remove unused patch entries
+
+--- photocraft-0.23.1.orig/Cargo.lock
++++ photocraft-0.23.1/Cargo.lock
+@@ -10127,17 +10127,3 @@ dependencies = [
+  "winnow",
+ ]
+ 
+-[[patch.unused]]
+-name = "egui_demo_lib"
+-version = "0.37.0"
+-source = "git+https://github.com/storytold/egui.git?rev=6d518fc799681571963842f95b55a6b68431b15a#6d518fc799681571963842f95b55a6b68431b15a"
+-
+-[[patch.unused]]
+-name = "egui_inspection"
+-version = "0.37.0"
+-source = "git+https://github.com/storytold/egui.git?rev=6d518fc799681571963842f95b55a6b68431b15a#6d518fc799681571963842f95b55a6b68431b15a"
+-
+-[[patch.unused]]
+-name = "egui_system_font_provider"
+-version = "0.37.0"
+-source = "git+https://github.com/storytold/egui.git?rev=6d518fc799681571963842f95b55a6b68431b15a#6d518fc799681571963842f95b55a6b68431b15a"
+--- photocraft-0.23.1.orig/Cargo.toml
++++ photocraft-0.23.1/Cargo.toml
+@@ -205,10 +205,7 @@ egui-wgpu = { git = "https://github.com/
+ egui_glow = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+ egui_extras = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+ egui_kittest = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+-egui_system_font_provider = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+ eframe = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+-egui_demo_lib = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+-egui_inspection = { git = "https://github.com/storytold/egui.git", rev = "6d518fc799681571963842f95b55a6b68431b15a" }
+ winit = { git = "https://github.com/storytold/winit.git", rev = "a517b3846ee8457d84ee4975110bfda6797c44dc" }
+ # craft-pdf's vendored Hayro trees: consumers patch the same craft-libs revision (crates/pdf README).
+ hayro = { git = "https://github.com/storytold/craft-libs", rev = "6e03f65bf45181db77ba6229716e6624db9eb25b" }

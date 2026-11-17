@@ -1,0 +1,41 @@
+Source: photocraft
+Section: graphics
+Maintainer: Dimitry Ishenko <dimitry.ishenko@gmail.com>
+Build-Depends:
+ debhelper-compat (= 13),
+ cargo:native (>= 1.95) | cargo-1.95:native,
+ rustc:native (>= 1.95) | rustc-1.95:native,
+Standards-Version: 4.7.4
+Homepage: https://getartcraft.com/apps/photocraft
+Vcs-Browser: https://github.com/storytold/photocraft
+Vcs-Git: https://github.com/storytold/photocraft.git
+
+Package: photocraft
+Architecture: any
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+ libvulkan1 | libegl1,
+ libwayland-client0,
+ libx11-6,
+ libx11-xcb1,
+ libxcb1,
+ libxcursor1,
+ libxi6,
+ libxkbcommon-x11-0,
+ libxkbcommon0,
+Recommends:
+ dbus-bin,
+ libegl-mesa0,
+ mesa-vulkan-drivers,
+ xdg-desktop-portal,
+Suggests:
+ xdg-desktop-portal-gtk,
+Description: Open-source photo editor
+ Image editing; an open-source, clean-room reimplementation of Adobe Photoshop,
+ rebuilt in pure Rust.
+ .
+ Layers, masks, adjustment layers, layer styles, type, vectors, brushes and
+ real PSD files, in a native app written entirely in Rust.
+ .
+ Open source, offline, and yours.
