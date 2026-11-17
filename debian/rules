@@ -3,9 +3,8 @@ include /usr/share/dpkg/pkg-info.mk
 
 export DH_VERBOSE = 1
 
-RUST_VERS = 1.95
-export CARGO := $(shell command -v cargo-$(RUST_VERS) 2>/dev/null || command -v cargo)
-export RUSTC := $(shell command -v rustc-$(RUST_VERS) 2>/dev/null || command -v rustc)
+export CARGO := $(shell ls -1 /usr/bin/cargo /usr/bin/cargo-[0-9]* 2>/dev/null | head -1)
+export RUSTC := $(shell ls -1 /usr/bin/rustc /usr/bin/rustc-[0-9]* 2>/dev/null | head -1)
 
 export CARGO_HOME = $(CURDIR)/debian/cargo_home
 export LOCKSTEP_XML_PATH = $(CURDIR)/vendor/atspi-common/xml
