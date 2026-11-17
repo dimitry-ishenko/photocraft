@@ -1,6 +1,6 @@
 [profile.release]
 debug = false
-strip = false
+strip = true
 
 [source.crates-io]
 replace-with = "vendored-sources"
