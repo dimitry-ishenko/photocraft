@@ -1,5 +1,102 @@
-photocraft (0.23.1+dfsg-1) UNRELEASED; urgency=medium
+photocraft (0.23.1+dfsg-1) unstable; urgency=medium
 
-  * Initial release.
+  [ Dimitry Ishenko ]
+  * Add Debian packaging
+  * Remove ArtCraft trademarked files
 
- -- Dimitry Ishenko <dimitry.ishenko@gmail.com>  Sun, 15 Nov 2026 20:15:40 -0500
+  [ Dylan M. Taylor ]
+  * Merge tested main for v0.23.1
+  * Fix Flatpak updates and bump to 0.23.1 (#13322)
+  * paint: two stroke tests check the result the stroke now returns
+  * paint: refuse a sequential-dab stroke whose working copy is too
+    large (#11070)
+  * Engine: check dense working buffers against a budget before
+    expanding sparse content (#10964)
+  * Actions: charge skipped steps to the playback budget, bound batch
+    nesting, clip the set override (#10969)
+  * fix(engine): authorization for nested scratch sessions and preset
+    calls, CSV and PostScript text escaping (#11188)
+  * fix(engine): bound sparse remap, scaled clone sources, path reads,
+    export format, name lookups (#11181)
+  * fix(codecs): checked sizes in encoders, EXR name lookup, FITS float
+    limit, VP8 plane copies, EXIF thumbnail bytes (#11164)
+  * fix(format,engine): limit zstd windows, set bundle modes via the
+    handle, refuse symlinked presets (#11145)
+  * fix(io): charge importers for the whole tiles surfaces keep (#11144)
+  * fix(gpu): cap plan accumulator slots and gradient lookup tables
+    (#11061)
+  * codecs: list each Cryptomatte layer once and index streams by name
+    (#10978)
+  * fix(algo): bound EXIF text decoding, warp scans, gallery windows,
+    inpaint sizes, pyramid depth (#11161)
+  * fix(algo): hold raw filter parameters to their ranges (Water Paper,
+    Box Blur, Lanczos, Camera Raw noise) (#11199)
+  * fix(ui-egui): bound the RAW re-read and treat symlinked names as
+    taken in batch export (#11204)
+  * Save: a replacement in another group does not widen group access
+    (#11232)
+  * fix(cms): charge decoded CLUT values against a per-profile budget
+    (#11055)
+  * Camera Raw: read each source row once when building the preview
+    proxy (#11064)
+  * fix(compose): bisect gradient stops, evict oversized effect maps,
+    skip empty distance transforms (#11056)
+  * fix(engine): apply the metadata choice to WebP Quick Export (#11058)
+  * text: charge the rasterizer's output tiles, not only its pixels
+    (#11047)
+  * Escape control characters in log lines and diagnostic output taken
+    from files and plug-ins (#11218)
+  * automation: save_bytes never reads linked files (#11233)
+  * Place: refuse a scale that makes the placed image exceed the render
+    pixel limit (#11229)
+  * macOS signing: decode the certificate into an exclusive temp file
+    (#11028)
+  * ci: use StepSecurity's maintained actions (#13337)
+  * Merge pull request #13281 from storytold/chore/craft-update-6e03f65
+  * Updates: take craft-update from craft-libs main at 6e03f65bf
+
+  [ David Mann ]
+  * Merge pull request #12237 from hectorviov/fix/perspective-crop-
+    field-limits
+  * Merge pull request #13257 from davidmann4/fix/main-red-automation-
+    gpu-group
+  * Merge pull request #13234 from Raghav2012Code/fix/13065-pcrop-keep-
+    clicked-corners
+  * Merge pull request #13215 from TrevorBrown-dev/fix/add-anchor-
+    straight-smooth-12706
+  * Merge pull request #13176 from Raghav2012Code/fix/13072-delete-
+    anchor-escape-stage
+  * Merge pull request #13303 from NaufalDzz/fix/issue-13244
+  * Merge pull request #13020 from slafebre/feat/12054-type-bar-panels-
+    toggle
+  * Merge pull request #13342 from RickiNano/fix/13308-star-outer-
+    corner-radius
+  * Merge pull request #13378 from storytold/fix/paint-tests-use-stroke-
+    results
+  * Merge pull request #12206 from hectorviov/fix/count-options-bar
+  * Merge pull request #13305 from RickiNano/fix/13241-line-tool-
+    defaults
+  * Merge pull request #13313 from rmsff/fix/freeform-pen-close-
+    tolerance-12830
+  * Merge pull request #13141 from rmsff/fix/convert-point-drag-segment-
+    12741
+  * Merge pull request #13188 from rmsff/fix/delete-anchor-alt-click-
+    12770
+  * Merge pull request #13013 from RickiNano/feat/12066-zoom-out-mode
+  * Merge pull request #6413 from marmitoTH/fix/pen-undo-resumes-path
+  * Count size caption test: skip without the craft-i18n catalogs (PR
+    #12206)
+  * Merge pull request #13171 from rmsff/fix/remove-locked-layer-alert-
+    12552
+  * Merge main into fix/count-options-bar (conflicts in analysis_ui.rs,
+    widgets.rs, widgets/fields.rs)
+  * Merge pull request #13151 from rmsff/fix/remove-default-size-12548
+  * Merge pull request #13217 from RickiNano/fix/13067-ruler-angle-f64
+  * Merge pull request #13212 from RickiNano/fix/sampler-drag-cursor-
+    13063
+  * Pen resume (#6413): Step Backward/Forward, per-document Redo,
+    redrawn drafts, Esc fallback
+  * Merge origin/main into fix/pen-undo-resumes-path (#6413)
+  * Merge pull request #13278 from rmsff/feat/red-eye-canvas-menu-12577
+
+ -- Dimitry Ishenko <dimitry.ishenko@gmail.com>  Tue, 17 Nov 2026 00:33:59 -0500
